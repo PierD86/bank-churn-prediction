@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "bank-churn-pred"
+version = "0.1.0"
+description = ""
+authors = ["Piero Danti <piero_danti@yanmar.com>"]
+readme = "README.md"
+packages = [{include = "bank_churn_pred", from = "src"}]
+
+[virtualenvs]
+create = true
+in-project = true
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ruff = "^0.3.5"
+pytest = "^8.1.1"
+pre-commit = "^3.7.0"
+jupyterlab = "^4.1.6"
+pandas = "^2.2.1"
+scikit-learn = "^1.4.2"
+seaborn = "^0.13.2"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+line-length = 99
+exclude = ["jupyter_notebook_config.py"]
+select = [
+    "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "C901",  # too complex
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+

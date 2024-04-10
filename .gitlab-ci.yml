@@ -1,0 +1,39 @@
+default:
+  image: python:3.10
+  before_script:
+    - python -m pip install poetry
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - ./.venv
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages:
+  - build
+  - test
+
+venv:
+  stage: build
+  script:
+    - echo "Creating virtual environment..."
+    - poetry config virtualenvs.in-project true
+    - poetry install
+
+lint:
+  stage: test
+  script:
+    - echo "Linting..."
+    - poetry run ruff check .
+
+test:
+  stage: test
+  needs: [lint]
+  script:
+    - echo "Running unit tests..."
+    - poetry run pytest
