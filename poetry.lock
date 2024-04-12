@@ -1161,6 +1161,25 @@ test = ["coverage", "pytest (>=7.0)", "pytest-check-links (>=0.7)", "pytest-cons
 upgrade-extension = ["copier (>=8.0,<9.0)", "jinja2-time (<0.3)", "pydantic (<2.0)", "pyyaml-include (<2.0)", "tomli-w (<2.0)"]
 
 [[package]]
+name = "jupyterlab-code-formatter"
+version = "2.2.1"
+description = "A JupyterLab plugin to facilitate invocation of code formatters."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "jupyterlab_code_formatter-2.2.1-py3-none-any.whl", hash = "sha256:5f196ef80d1ae53028b04425a3f1cfb008fb211b46f942701af5fdd7557b5fe1"},
+    {file = "jupyterlab_code_formatter-2.2.1.tar.gz", hash = "sha256:85322819da61f025ebc7c4a842979994fa812ad44c334fdb6ebb9ebad58dae08"},
+]
+
+[package.dependencies]
+jupyter-server = ">=1.21,<3"
+packaging = "*"
+
+[package.extras]
+dev = ["autopep8", "black (==22.1.0)", "blue (==0.9.1)", "click (==8.0.2)", "isort", "jupyterlab (>=3.0.0)", "rpy2", "ruff", "yapf"]
+test = ["black (==22.1.0)", "blue (==0.9.1)", "coverage", "importlib-metadata", "isort", "pytest", "pytest-asyncio", "pytest-cov", "pytest-jupyter[server] (>=0.6.0)", "yapf"]
+
+[[package]]
 name = "jupyterlab-pygments"
 version = "0.3.0"
 description = "Pygments theme using JupyterLab CSS variables"
@@ -2888,4 +2907,4 @@ test = ["websockets"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ebc89502ecd4d20cb5618aa6e3b3c1087ff7720b5a25f790ffa979955ba2afce"
+content-hash = "bfc84a4f056a04837ae64ee1cfc66476265c498d201fe19737e23a24f84232c2"
