@@ -42,6 +42,5 @@ truths/
 *.tar
 *.bak
 *.zip
-*.csv
 *.xlsx
 *.npy
